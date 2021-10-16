@@ -1,7 +1,7 @@
 import cv2
 from all_tracking_utils import detector
 
-# Choose one out of 'hands, pose, face_mesh, holistic'
+# Choose one out of 'hands, pose, face_mesh'
 detect = detector('hands')
 
 cap = cv2.VideoCapture(1) # Check for error
