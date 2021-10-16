@@ -72,7 +72,7 @@ class detector():
         if fps:
             curr_time = time.time()
             fps = 1/(curr_time - self.prev_time)
-            prev_time = curr_time
+            self.prev_time = curr_time
 
 
         cv2.putText(
@@ -91,7 +91,7 @@ class detector():
 def main():
 
     # Choose one out of 'hands, pose, face_mesh, holistic'
-    detect1 = detector('')
+    detect1 = detector('hands')
 
     cap = cv2.VideoCapture(1) # Check for error
 
