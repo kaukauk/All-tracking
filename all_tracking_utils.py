@@ -8,22 +8,19 @@ class detector():
         detector_object = {
             'hands': [mp.solutions.hands, mp.solutions.hands.Hands],
             'pose': [mp.solutions.pose, mp.solutions.pose.Pose],
-            'face_mesh': [mp.solutions.face_mesh, mp.solutions.face_mesh.FaceMesh],
-            'holistic': [mp.solutions.holistic, mp.solutions.holistic.Holistic]
+            'face_mesh': [mp.solutions.face_mesh, mp.solutions.face_mesh.FaceMesh]
         }
 
         self.object_draw_details = {
             'hands': ['results.multi_hand_landmarks', 'self.mp_object.HAND_CONNECTIONS'],
             'pose': ['results.pose_landmarks', 'self.mp_object.POSE_CONNECTIONS'],
-            'face_mesh': ['results.multi_face_landmarks', 'self.mp_object.FACEMESH_TESSELATION'],
-            'holistic': ['results.pose_landmarks', 'self.mp_object.POSE_CONNECTIONS']
+            'face_mesh': ['results.multi_face_landmarks', 'self.mp_object.FACEMESH_TESSELATION']
         }
 
         self.object_iteration = {
             'hands': 'results.multi_hand_landmarks',
             'pose': '[results.pose_landmarks]',
-            'face_mesh': 'results.multi_face_landmarks',
-            'holistic': '[results.pose_landmarks]'
+            'face_mesh': 'results.multi_face_landmarks'
         }
 
         self.detection = detection
@@ -90,17 +87,17 @@ class detector():
 
 def main():
 
-    # Choose one out of 'hands, pose, face_mesh, holistic'
-    detect1 = detector('hands')
+    # Choose one out of 'hands, pose, face_mesh'
+    detect = detector('face_mesh')
 
     cap = cv2.VideoCapture(1) # Check for error
 
     while True:
         success, img = cap.read()
 
-        img, lm_list = detect1.find_lms(img, draw=False)
+        img, lm_list = detect.find_lms(img, draw=False)
 
-        detect1.display_img(img)
+        detect.display_img(img)
 
 if __name__ == '__main__':
     main()
