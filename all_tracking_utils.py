@@ -48,7 +48,7 @@ class detector():
 
             for lms in eval(self.iteration):
 
-                self.mp_draw.draw_landmarks(img, lms, eval(self.connection_details))
+                self.mp_draw.draw_landmarks(img, lms, eval(self.connection_details), self.mp_draw.DrawingSpec(color = (0, 0, 255), thickness = 1, circle_radius = 3))
 
                 for id, lm in enumerate(lms.landmark):
                     
